@@ -1,0 +1,65 @@
+filters:
+  and:
+    - file.inFolder("Оптимизация/Экзамен")
+    - file.ext == "md"
+    - note["тип"] == "экзаменационный вопрос"
+properties:
+  file.name:
+    displayName: Вопрос
+  note.номер:
+    displayName: №
+  note.блок:
+    displayName: Блок
+  note.статус:
+    displayName: Статус
+  note.пройдено:
+    displayName: Пройдено
+views:
+  - type: table
+    name: Все вопросы
+    order:
+      - номер
+      - file.name
+      - блок
+      - статус
+      - пройдено
+      - основа
+      - опоры
+      - практика
+    sort:
+      - property: номер
+        direction: ASC
+  - type: table
+    name: Не пройдено
+    filters:
+      and:
+        - note["пройдено"] != true
+    order:
+      - номер
+      - file.name
+      - блок
+      - статус
+      - пройдено
+      - основа
+      - опоры
+      - практика
+    sort:
+      - property: номер
+        direction: ASC
+  - type: table
+    name: По блокам
+    groupBy:
+      property: блок
+      direction: ASC
+    order:
+      - номер
+      - file.name
+      - блок
+      - статус
+      - пройдено
+      - основа
+      - опоры
+      - практика
+    sort:
+      - property: номер
+        direction: ASC
