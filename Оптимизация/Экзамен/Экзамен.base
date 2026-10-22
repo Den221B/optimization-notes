@@ -1,8 +1,8 @@
 filters:
   and:
-    - file.inFolder("Оптимизация/Экзамен")
-    - file.ext == "md"
-    - note["тип"] == "экзаменационный вопрос"
+  - file.inFolder("Оптимизация/Экзамен")
+  - file.ext == "md"
+  - note["тип"] == "экзаменационный вопрос"
 properties:
   file.name:
     displayName: Вопрос
@@ -15,51 +15,51 @@ properties:
   note.пройдено:
     displayName: Пройдено
 views:
-  - type: table
-    name: Все вопросы
-    order:
-      - номер
-      - file.name
-      - блок
-      - статус
-      - пройдено
-      - основа
-      - опоры
-      - практика
-    sort:
-      - property: номер
-        direction: ASC
-  - type: table
-    name: Не пройдено
-    filters:
-      and:
-        - note["пройдено"] != true
-    order:
-      - номер
-      - file.name
-      - блок
-      - статус
-      - пройдено
-      - основа
-      - опоры
-      - практика
-    sort:
-      - property: номер
-        direction: ASC
-  - type: table
-    name: По блокам
-    groupBy:
-      property: блок
-      direction: ASC
-    order:
-      - номер
-      - file.name
-      - блок
-      - статус
-      - пройдено
-      - основа
-      - опоры
-      - практика
-    sort:
-      - property: номер
-        direction: ASC
+- type: table
+  name: Все вопросы
+  order:
+  - номер
+  - file.name
+  - блок
+  - статус
+  - пройдено
+  - основа
+  - опоры
+  - практика
+  sort:
+  - property: номер
+    direction: ASC
+- type: table
+  name: Не пройдено
+  order:
+  - номер
+  - file.name
+  - блок
+  - статус
+  - пройдено
+  - основа
+  - опоры
+  - практика
+  sort:
+  - property: номер
+    direction: ASC
+  filters:
+    and:
+    - note["пройдено"] != true
+- type: table
+  name: По блокам
+  order:
+  - номер
+  - file.name
+  - блок
+  - статус
+  - пройдено
+  - основа
+  - опоры
+  - практика
+  sort:
+  - property: номер
+    direction: ASC
+  groupBy:
+    property: блок
+    direction: ASC
